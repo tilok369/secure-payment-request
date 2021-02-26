@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h4 class="title">Secure Payment Gateway Service</h4>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-sm-8 col-xs-8 col-md-offset-2">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                CREDIT &amp; DEBIT CARDS
+                <img class="card" src="~/Content/img/cardss.png" />
+            </div>
+            <div class="panel-body">
+                <div>
+                    <div class="form-group">
+                        <label for="cardholder-name">Cardholder Name</label>
+                        <input type="text" class="form-control" id="cardholder-name" placeholder="Name on card">
+                        <label id="cardholder-name-vld" class="validation-lbl"></label>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" class="form-control" id="card-number" placeholder="XXXX XXXX XXXX XXXX">
+                        <label id="card-number-vld" class="validation-lbl"></label>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="text" class="form-control" id="expiry-date" placeholder="mm/yy">
+                        <label id="expiry-date-vld" class="validation-lbl"></label>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="password" class="form-control" id="cvv" placeholder="3 digits">
+                        <label id="cvv-vld" class="validation-lbl"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button type="button" onclick="securePaymentService.submit()" class="btn btn-success btn-block">PAY NOW &gt;&gt;</button>
+            </div>
+        </div>
+    </div>
+</div>
