@@ -11,6 +11,16 @@
             });
         return encryptedlogin.toString();
     },
+    encryptDynamic: function (k, plainText) {
+        var encryptedlogin = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(plainText), CryptoJS.enc.Utf8.parse(k),
+            {
+                keySize: 128 / 8,
+                iv: this.iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+        return encryptedlogin.toString();
+    },
     decrypt: function (ciphertext) {
 
     }

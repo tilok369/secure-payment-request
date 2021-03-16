@@ -30,6 +30,7 @@ namespace SecureRequest.Web.Helper
                 rijAlg.Mode = CipherMode.CBC;
                 rijAlg.Padding = PaddingMode.PKCS7;
                 rijAlg.FeedbackSize = 128;
+                //rijAlg.KeySize = 128;
 
                 rijAlg.Key = _key;
                 rijAlg.IV = _iv;

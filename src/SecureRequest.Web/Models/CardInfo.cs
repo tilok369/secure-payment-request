@@ -11,5 +11,6 @@ namespace SecureRequest.Web.Models
         public string Number { get; set; }
         public string ExpiryDate { get; set; }
         public string Cvv { get; set; }
+        public string Key { get; set; }
     }
 }

@@ -24,17 +24,19 @@ namespace SecureRequest.Web.Controllers
         {
             try
             {
+                var key = _encryption.DecodeFromBase64String(cardInfo.Key);
+                var encryption = new Encryption(key, AppSettings["IV"]);
                 var ci = new CardInfo
                 {
-                    Name = _encryption.DecodeFromBase64String(cardInfo.Name),
-                    Number = _encryption.DecodeFromBase64String(cardInfo.Number),
-                    ExpiryDate = _encryption.DecodeFromBase64String(cardInfo.ExpiryDate),
-                    Cvv = _encryption.DecodeFromBase64String(cardInfo.Cvv)
+                    Name = encryption.DecodeFromBase64String(cardInfo.Name),
+                    Number = encryption.DecodeFromBase64String(cardInfo.Number),
+                    ExpiryDate = encryption.DecodeFromBase64String(cardInfo.ExpiryDate),
+                    Cvv = encryption.DecodeFromBase64String(cardInfo.Cvv)
                 };
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 return false;
             }

@@ -27,11 +27,18 @@
 
     submit: function () {
         if (securePaymentService.validate()) {
+            var d = new Date();
+            var k = d.getFullYear() + '' + (d.getMonth() < 10 ? '0' + d.getMonth() : d.getMonth()) + '' +
+                (d.getDate() < 10 ? '0' + d.getDate() : d.getDate()) + '' +
+                (d.getHours() < 10 ? '0' + d.getHours() : d.getHours()) + '' +
+                (d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes()) + '' +
+                (d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds()) + 'XX';
             var cardInfo = {
-                Name: cryptoGraphy.encrypt($('#cardholder-name').val()),
-                Number: cryptoGraphy.encrypt($('#card-number').val()),
-                ExpiryDate: cryptoGraphy.encrypt($('#expiry-date').val()),
-                Cvv: cryptoGraphy.encrypt($('#cvv').val())
+                Name: cryptoGraphy.encryptDynamic(k, $('#cardholder-name').val()),
+                Number: cryptoGraphy.encryptDynamic(k, $('#card-number').val()),
+                ExpiryDate: cryptoGraphy.encryptDynamic(k, $('#expiry-date').val()),
+                Cvv: cryptoGraphy.encryptDynamic(k, $('#cvv').val()),
+                Key: cryptoGraphy.encrypt(k)
             };
             $.ajax({
                 type: "POST",
